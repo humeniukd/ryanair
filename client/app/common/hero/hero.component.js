@@ -1,10 +1,11 @@
 import template from './hero.html';
 import controller from './hero.controller';
-import './hero.scss';
+import './hero.less';
 
 let heroComponent = {
   restrict: 'E',
   bindings: {},
+  controllerAs: 'he',
   template,
   controller
 };

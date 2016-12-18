@@ -1,5 +1,5 @@
 import <%= upCaseName %>Module from './<%= name %>'
-import <%= upCaseName %>Controller from './<%= name %>.controller';
+import <%= upCaseName %>Controller from './<%= name %>.FooterController';
 import <%= upCaseName %>Component from './<%= name %>.component';
 import <%= upCaseName %>Template from './<%= name %>.html';
 
@@ -43,7 +43,7 @@ describe('<%= upCaseName %>', () => {
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(<%= upCaseName %>Controller);
+        expect(component.FooterController).to.equal(<%= upCaseName %>Controller);
       });
   });
 });

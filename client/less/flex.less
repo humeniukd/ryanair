@@ -1,0 +1,40 @@
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@breakpoints: sm, md, lg;
+
+.content(@suffix) {
+  // Flex column reordering
+  .flex-@{suffix}-first { order: -1; }
+  .flex-@{suffix}-last { order: 1; }
+  .flex-@{suffix}-unordered { order: 0; }
+  // Alignment for every item
+  .flex-items-@{suffix}-top { align-items: flex-start; }
+  .flex-items-@{suffix}-middle { align-items: center; }
+  .flex-items-@{suffix}-bottom { align-items: flex-end; }
+  // Alignment per item
+  .flex-@{suffix}-top   { align-self: flex-start; }
+  .flex-@{suffix}-middle { align-self: center; }
+  .flex-@{suffix}-bottom { align-self: flex-end; }
+  // Horizontal alignment of item
+  .flex-items-@{suffix}-left { justify-content: flex-start; }
+  .flex-items-@{suffix}-center { justify-content: center; }
+  .flex-items-@{suffix}-right { justify-content: flex-end; }
+  .flex-items-@{suffix}-around { justify-content: space-around; }
+  .flex-items-@{suffix}-between { justify-content: space-between; }
+}
+
+.loop(@index) when (@index >= 1) {
+  @suffix: extract(@breakpoints, @index);
+
+  @media (min-width: ~"@{screen-@{suffix}}") {
+    .content(@suffix);
+  }
+  // next iteration
+  .loop((@index - 1));
+}
+.content(xs);
+
+.loop(length(@breakpoints));
+

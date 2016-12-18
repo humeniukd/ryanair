@@ -1,5 +1,5 @@
 import template from './app.html';
-import './app.scss';
+import './app.less';
 
 let appComponent = {
   template,
