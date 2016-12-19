@@ -1,8 +1,6 @@
-import help from 'gulp-help';
+import gulp from 'gulp';
 import path from 'path';
 import config from './config';
-
-let gulp = help(require('gulp'));
 
 /**
  * Start the tests using karma.
@@ -11,9 +9,9 @@ let gulp = help(require('gulp'));
  * @return {undefined}
  */
 function startTests(singleRun, done) {
-  var child;
-  var excludeFiles = [];
-  var Karma = require('karma').Server;
+  let child;
+  const excludeFiles = [];
+  const Karma = require('karma').Server;
 
   new Karma({
     configFile: path.resolve(config.karma.configFile),
@@ -37,7 +35,6 @@ function startTests(singleRun, done) {
   }
 }
 
-gulp.task('test-unit', 'Run unit tests for client-side and backend parts',
-  ['ng-config'], (done) => {
-    startTests(true /*singleRun*/, done);
-  });
+gulp.task('test-unit', (done) => {
+  startTests(true /*singleRun*/, done);
+});

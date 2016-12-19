@@ -1,15 +1,12 @@
 <div class="container">
 
-  <form class="form-signin">
+  <form name="search">
     <h2 class="form-signin-heading">Please flights criteria</h2>
     <div class="row">
-        <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{he.format}}" ng-model="he.dt" is-open="he.popup1.opened" datepicker-options="he.dateOptions" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="he.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-        </p>
+      <input date-input name="from" type="text" ng-model="he.date"/>
+      <span class="input-group-addon" ng-click="he.flag=!he.flag"><i class="glyphicon glyphicon-calendar"></i></span>
     </div>
+    <div uib-datepicker-popup is-open="he.flag" ng-model="he.date" datepicker-options="he.options"></div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
   </form>
 

@@ -1,10 +1,8 @@
-import help from 'gulp-help';
+import gulp from 'gulp';
 import jshint from 'gulp-jshint';
 import config from './config';
 
-let gulp = help(require('gulp'));
-
-gulp.task('lint', 'Lint scripts and try to fix any code style errors', () => {
+gulp.task('lint', () => {
   return gulp
     .src(config.vetJs)
     .pipe(jshint())

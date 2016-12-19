@@ -1,13 +1,11 @@
-import help from 'gulp-help';
+import gulp from 'gulp';
 import webpack from 'webpack';
 import gutil from 'gulp-util';
 import colorsSupported from 'supports-color';
 import config from './config';
 const {webpackConfig} = config;
 
-let gulp = help(require('gulp'));
-
-gulp.task('build', 'Build client-side scripts', (callback) => {
+gulp.task('build', (callback) => {
 
   webpackConfig.entry.app = config.entry;
 

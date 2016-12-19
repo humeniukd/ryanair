@@ -1,16 +1,15 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import datepicker from 'angular-ui-bootstrap/src/datepicker';
-import collapse from 'angular-ui-bootstrap/src/collapse';
-import Common from './common/common';
-import Components from './components/components';
+import datepicker from 'angular-ui-bootstrap/src/datepickerPopup';
+import Common from './common';
+import Components from './components';
 import AppComponent from './app.component';
+import 'angular-bootstrap-datetimepicker/src/css/datetimepicker.css';
 import '../less/bootstrap.less';
 
 angular.module('app', [
     uiRouter,
     datepicker,
-    collapse,
     Common,
     Components
   ])
