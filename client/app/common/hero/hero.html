@@ -1,17 +1,32 @@
-<div class="container">
-
-  <form name="search">
-    <h2 class="form-signin-heading">Please flights criteria</h2>
-    <div class="row">
-      <input date-input name="from" type="text" ng-model="he.date"/>
-      <span class="input-group-addon" ng-click="he.flag=!he.flag"><i class="glyphicon glyphicon-calendar"></i></span>
-    </div>
-    <div uib-datepicker-popup is-open="he.flag" ng-model="he.date" datepicker-options="he.options"></div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
-  </form>
-
-</div>
 <section class="hero">
   <h1>RyanAir test app</h1>
-  <h3>You can find me inside {{ $ctrl.name }}.html</h3>
+  <div class="container">
+    <form ng-submit="he.submit()"
+          name="he.form">
+      <h2>Please flights criteria</h2>
+      <div class="row">
+        <label>Choose a departure airport</label>
+        <input type="text" ng-model="he.source" uib-typeahead="item.value as item.name for item in he.getLocations($viewValue)" class="form-control" typeahead-min-length="2" required>
+      </div>
+      <div class="row">
+        <label>Choose a arrive airport</label>
+        <input type="text" ng-model="he.destination" uib-typeahead="item.value as item.name for item in he.getDestinations($viewValue)" class="form-control" required>
+      </div>
+      <div class="row">
+        <input name="startDate" type="text" ng-model="he.startDate" required/>
+        <span class="input-group-addon" ng-click="he.startDatePickerIsOpened=!he.startDatePickerIsOpened">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </span>
+        <div uib-datepicker-popup is-open="he.startDatePickerIsOpened" ng-model="he.startDate" datepicker-options="he.datePickerOptions"></div>
+      </div>
+      <div class="row">
+        <input name="endDate" type="text" ng-model="he.endDate" required/>
+        <span class="input-group-addon" ng-click="he.endDatePickerIsOpened=!he.endDatePickerIsOpened">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </span>
+        <div uib-datepicker-popup is-open="he.endDatePickerIsOpened" ng-model="he.endDate" datepicker-options="he.datePickerOptions"></div>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+    </form>
+  </div>
 </section>

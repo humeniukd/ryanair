@@ -1,10 +1,8 @@
 import angular from 'angular';
-import UserFactory from './rest.factory';
+import Rest from './rest.provider';
 
-let userModule = angular.module('rest', [])
+export default angular.module('rest', [])
 
-.factory('Rest', UserFactory)
+.provider('Rest', Rest)
 
 .name;
-
-export default userModule;

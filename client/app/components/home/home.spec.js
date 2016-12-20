@@ -1,4 +1,7 @@
-import HomeModule from './home'
+/* jshint mocha:true */
+/* jshint jasmine:true */
+/* global inject */
+import HomeModule from './';
 
 describe('Home', () => {
   let $rootScope, $state, $location, $componentController, $compile;

@@ -1,4 +1,7 @@
-import NavbarModule from './navbar'
+/* jshint mocha:true */
+/* jshint jasmine:true */
+/* global inject */
+import NavbarModule from './';
 
 describe('Navbar', () => {
   let $rootScope, $state, $location, $componentController, $compile;
@@ -15,20 +18,6 @@ describe('Navbar', () => {
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
-  });
-
-  describe('Controller', () => {
-    // controller specs
-    let controller;
-    beforeEach(() => {
-      controller = $componentController('navbar', {
-        $scope: $rootScope.$new()
-      });
-    });
-
-    it('has a name property', () => { // erase if removing this.name from the controller
-      expect(controller).to.have.property('name');
-    });
   });
 
   describe('View', () => {

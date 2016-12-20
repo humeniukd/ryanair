@@ -1,4 +1,7 @@
-import FooterModule from './footer'
+/* jshint mocha:true */
+/* jshint jasmine:true */
+/* global inject */
+import FooterModule from './';
 
 describe('Footer', () => {
   let $rootScope, $compile;

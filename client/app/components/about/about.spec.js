@@ -1,4 +1,7 @@
-import AboutModule from './about'
+/* jshint mocha:true */
+/* jshint jasmine:true */
+/* global inject */
+import AboutModule from './';
 
 describe('About', () => {
   let $rootScope, $state, $location, $componentController, $compile;
