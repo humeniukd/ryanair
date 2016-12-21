@@ -25,7 +25,7 @@ export default class HeroController {
     }
   }
   startDateChange(){
-    this.endDateOptions.minDate = this.endDate = this.startDate;
+    this.endDateOptions.minDate = this.startDate;
   }
   endDateChange(){
     this.startDateOptions.maxDate = this.endDate;
