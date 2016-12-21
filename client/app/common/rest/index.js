@@ -1,7 +1,7 @@
 import angular from 'angular';
 import Rest from './rest.provider';
 
-export default angular.module('rest', [])
+export default angular.module('app.rest', [])
 
 .provider('Rest', Rest)
 

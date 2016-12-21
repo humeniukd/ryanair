@@ -51,13 +51,7 @@ describe('Parsers', () => {
         currency: '€',
         price: 14.056763156782836
       }
-    ],
-    firstFlight = {
-      dateFrom: new Date('2014-12-25T03:36:40.855Z'),
-      dateTo: new Date('2015-01-13T08:51:09.862Z'),
-      currency: '€',
-      price: 14.056763156782836
-    };
+    ];
   let suggestParser, notSuggestParser, routesParser, noRoutesParser;
 
   beforeEach(() => {
@@ -84,12 +78,12 @@ describe('Parsers', () => {
     });
   });
   describe('parseFlights()', () => {
-    const parsedFlights = parseFlights({flights});
+    const parsedFlights = parseFlights({flights: flights.slice()});
     it('should return same number of flights', () => {
       expect(parsedFlights.length).to.equal(flights.length);
     });
     it('should return sorted flights', () => {
-      expect(parsedFlights[0]).to.deep.equal(firstFlight);
+      expect(parsedFlights[0].price).to.equal(flights[2].price);
     });
   });
 });

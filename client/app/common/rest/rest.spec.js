@@ -1,22 +1,22 @@
 /* jshint mocha:true */
 /* jshint jasmine:true */
 /* global inject */
-import './';
+import Rest from './';
 
 describe('Rest', () => {
   const model = {id: 1, user: 'Paul', amount: 3.1416};
-  let $httpBackend, Rest;
-  beforeEach(angular.mock.module('app.rest'));
+  let $httpBackend, rest;
+  beforeEach(angular.mock.module(Rest));
 
   beforeEach(inject(($injector) => {
     $httpBackend = $injector.get('$httpBackend');
-    $httpBackend.whenGET('/someurl').respond(model);
-    Rest = $injector.get('Rest');
+    $httpBackend.whenGET('').respond(model);
+    rest = $injector.get('Rest');
   }));
 
-  describe('getWithHttp', () => {
-    it('getWithHttp() should return an item', () => {
-      Rest.getWithHttp('/someurl').then((resp) => {
+  describe('getAirports', () => {
+    it('getAirports() should return an item', () => {
+      rest.getAirports().then((resp) => {
         expect(resp.data).to.deep.equal(model);
       });
 
