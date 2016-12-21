@@ -53,7 +53,7 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
-    "build": "export NODE_ENV=production || set NODE_ENV=production gulp webpack",
+    "build": "export NODE_ENV=production || set NODE_ENV=production && gulp webpack",
     "serve": "gulp serve",
     "start": "gulp",
     "test": "gulp test",

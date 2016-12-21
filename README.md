@@ -66,7 +66,7 @@ Here's a list of available tasks:
 * `npm run serve`
   * starts a dev server via `webpack-dev-server`, serving the client folder.
 * `npm run lint`
-  * `checks syntax`
+  * checks syntax
 * `npm start` (which is the default task that runs when typing `gulp` without providing an argument)
   * runs `gulp`.
 

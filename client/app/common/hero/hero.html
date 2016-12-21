@@ -1,58 +1,75 @@
-    <form ng-submit="$ctrl.submit()"
-          name="$ctrl.form">
-      <h2>Please specify flights criteria</h2>
-      <div class="row flex-items-xs-middle hero">
-        <div class="col-xs">
-          <input class="form-control"
-                 placeholder="Choose a departure airport"
-                 type="text"
-                 ng-model="$ctrl.source"
-                 uib-typeahead="item.value as item.name for item in $ctrl.getSources($viewValue)"
-                 typeahead-min-length="2"
-                 required
-          />
-        </div>
-        <div class="col-xs">
-          <input class="form-control"
-                 placeholder="Destination airport"
-                 type="text"
-                 ng-model="$ctrl.destination"
-                 ng-disabled="!$ctrl.source"
-                 uib-typeahead="item.value as item.name for item in $ctrl.getDestinations($viewValue)"
-                 typeahead-min-length="0"
-                 required
-          />
-        </div>
-        <div class="col-xs">
-          <div class="input-group">
-            <input class="form-control"
-                   placeholder="Choose flight out"
-                   name="startDate"
-                   type="text"
-                   ng-model="$ctrl.startDate"
-                   uib-datepicker-popup
-                 is-open="$ctrl.startDatePickerIsOpened"
-                 ng-model="$ctrl.startDate"
-                 datepicker-options="$ctrl.startDateOptions"
-                 ng-change="$ctrl.startDateChange()"
-                 required/>
-            <span class="input-group-addon" ng-click="$ctrl.startDatePickerIsOpened=!$ctrl.startDatePickerIsOpened">
-              <i class="glyphicon glyphicon-calendar"></i>
-            </span>
-          </div>
-        </div>
-        <div class="col-xs">
-          <div class="input-group">
-            <input class="form-control" name="endDate" type="text"
-                   placeholder="Choose flight back"
-                   uib-datepicker-popup is-open="$ctrl.endDatePickerIsOpened" ng-model="$ctrl.endDate"
-                   ng-change="$ctrl.endDateChange()"
-                   datepicker-options="$ctrl.endDateOptions" required/>
-            <span class="input-group-addon" ng-click="$ctrl.endDatePickerIsOpened=!$ctrl.endDatePickerIsOpened">
-              <i class="glyphicon glyphicon-calendar"></i>
-            </span>
-          </div>
-        </div>
-        <div class="col-xs"><button class="btn btn-lg btn-primary btn-block" type="submit">Search</button></div>
+<form novalidate ng-submit="$ctrl.submit()" name="$ctrl.form" autocomplete="off">
+  <h2>Please specify flights criteria</h2>
+  <div class="row flex-items-xs-middle hero">
+    <div class="col-xs">
+      <input class="form-control"
+        placeholder="Choose a departure airport"
+        type="text"
+        name="source"
+        ng-model="$ctrl.source"
+        uib-typeahead="item.value as item.name for item in $ctrl.getSources($viewValue)"
+        typeahead-editable="false"
+        typeahead-min-length="1"
+        typeahead-editable="false"
+        typeahead-input-formatter="$ctrl.formatLabel($model, 'source')"
+        required
+      />
+      <div ng-show="!$ctrl.source && $ctrl.form.$submitted">You didn't select departure airport</div>
+    </div>
+    <div class="col-xs">
+      <input class="form-control"
+        placeholder="Destination airport"
+        type="text"
+        name="destination"
+        ng-model="$ctrl.destination"
+        ng-disabled="!$ctrl.source"
+        uib-typeahead="item.value as item.name for item in $ctrl.getDestinations($viewValue)"
+        typeahead-editable="false"
+        typeahead-input-formatter="$ctrl.formatLabel($model, 'destination')"
+        typeahead-min-length="0"
+        required
+      />
+      <div ng-show="!$ctrl.destination && $ctrl.form.$submitted">You didn't select destination airport</div>
+    </div>
+    <div class="col-xs">
+      <div class="input-group">
+        <input class="form-control"
+          placeholder="Choose flight out"
+          name="startDate"
+          type="text"
+          ng-model="$ctrl.startDate"
+          uib-datepicker-popup
+          is-open="$ctrl.startDatePickerIsOpened"
+          ng-model="$ctrl.startDate"
+          datepicker-options="$ctrl.startDateOptions"
+          ng-change="$ctrl.startDateChange()"
+          required
+        />
+        <span class="input-group-addon" ng-click="$ctrl.startDatePickerIsOpened=!$ctrl.startDatePickerIsOpened">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </span>
+        <div ng-show="!$ctrl.startDate && $ctrl.form.$submitted">You didn't select start date</div>
       </div>
-    </form>
+    </div>
+    <div class="col-xs">
+      <div class="input-group">
+        <input class="form-control"
+          name="endDate" type="text"
+          placeholder="Choose flight back"
+          uib-datepicker-popup
+          is-open="$ctrl.endDatePickerIsOpened"
+          ng-model="$ctrl.endDate"
+          ng-change="$ctrl.endDateChange()"
+          datepicker-options="$ctrl.endDateOptions"
+          required
+        />
+        <span class="input-group-addon" ng-click="$ctrl.endDatePickerIsOpened=!$ctrl.endDatePickerIsOpened">
+          <i class="glyphicon glyphicon-calendar"></i>
+        </span>
+        <div ng-show="!$ctrl.endDate && $ctrl.form.$submitted">You didn't select end date</div>
+      </div>
+    </div>
+    <div class="col-xs">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!$ctrl.form.$valid">Search</button>
+    </div>
+  </div></form>

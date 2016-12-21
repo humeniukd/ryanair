@@ -10,13 +10,18 @@ export default class HeroController {
       minDate: new Date()
     };
   }
+  formatLabel(model, type) {
+    return this[`${type}s`] && this[`${type}s`].find((option) => {
+      return model === option.value
+    }).name
+  }
   getSources(val) {
     return this.Rest.getAirports()
-      .then(resp => getSuggestions(val)(resp.data));
+      .then(resp => this.sources = getSuggestions(val)(resp.data));
   }
   getDestinations(val) {
     return this.Rest.getAirports()
-      .then(resp => getRoutes(this.source, val)(resp.data));
+      .then(resp => this.destinations = getRoutes(this.source, val)(resp.data));
   }
   submit() {
     const {startDate, endDate, source, destination} = this;
