@@ -2,7 +2,6 @@ import gulp from 'gulp';
 import './gulp/build';
 import './gulp/serve';
 import './gulp/lint';
-import './gulp/test-unit';
+import './gulp/test';
 
-gulp.task('default', ['serve']);
-gulp.task('test', ['lint', 'test-unit']);
+gulp.task('default', ['lint', 'test', 'serve']);

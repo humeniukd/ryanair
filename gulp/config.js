@@ -37,17 +37,6 @@ function getKarmaOptions() {
   let options = {
     configFile: 'karma.conf.js',
     exclude: [],
-    coverage: {
-      dir: `${report}/coverage`,
-      reporters: [
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'report-lcov' },
-        { type: 'text-summary' }
-      ]
-    },
-    jenkins: {
-      outputFile: `${report}/jenkins/test-results.xml`
-    },
     preprocessors: {}
   };
   options.preprocessors[`${client}/app/**/!(*.spec)+(.js)`] = ['coverage'];
@@ -68,13 +57,10 @@ export default {
   blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
   vetJs: [
     './client/**/*.js',
-    './e2e/**/*.js',
     './gulp/**/*.js',
     './gulpfile*.js',
     './webpack*.js',
-    './protractor*.js',
     './karma*.js',
-    './spec*.js',
-    '!./client/report/**/*.js'
+    './spec*.js'
   ]
 };
