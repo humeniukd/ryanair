@@ -2,15 +2,15 @@ import angular from 'angular';
 import Navbar from './navbar';
 import Hero from './hero';
 import Rest from './rest';
-import Item from './item';
-import List from './list';
+import Flight from './flight';
+import FlightsList from './flightsList';
 
 export default angular.module('app.common', [
   Navbar,
   Hero,
   Rest,
-  List,
-  Item
+  FlightsList,
+  Flight
 ])
 .name;
 

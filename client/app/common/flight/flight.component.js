@@ -1,5 +1,5 @@
-import template from './item.html';
-import './item.less';
+import template from './flight.html';
+import './flight.less';
 
 let itemComponent = {
   bindings: {

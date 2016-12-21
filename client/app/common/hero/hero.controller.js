@@ -12,8 +12,8 @@ export default class HeroController {
   }
   formatLabel(model, type) {
     return this[`${type}s`] && this[`${type}s`].find((option) => {
-      return model === option.value
-    }).name
+      return model === option.value;
+    }).name;
   }
   getSources(val) {
     return this.Rest.getAirports()
