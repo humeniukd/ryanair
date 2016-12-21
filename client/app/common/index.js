@@ -1,14 +1,16 @@
 import angular from 'angular';
 import Navbar from './navbar';
-import Footer from './footer';
 import Hero from './hero';
-import User from './rest';
+import Rest from './rest';
+import Item from './item';
+import List from './list';
 
 export default angular.module('app.common', [
   Navbar,
-  Footer,
   Hero,
-  User
+  Rest,
+  List,
+  Item
 ])
 .name;
 

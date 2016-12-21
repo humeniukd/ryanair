@@ -4,7 +4,7 @@
 
 @breakpoints: sm, md, lg;
 
-.content(@suffix) {
+.makeFlex(@suffix) {
   // Flex column reordering
   .flex-@{suffix}-first { order: -1; }
   .flex-@{suffix}-last { order: 1; }
@@ -25,16 +25,16 @@
   .flex-items-@{suffix}-between { justify-content: space-between; }
 }
 
-.loop(@index) when (@index >= 1) {
+.loopOverBreakpoints(@index) when (@index >= 1) {
   @suffix: extract(@breakpoints, @index);
 
   @media (min-width: ~"@{screen-@{suffix}}") {
-    .content(@suffix);
+    .makeFlex(@suffix);
   }
   // next iteration
-  .loop((@index - 1));
+  .loopOverBreakpoints((@index - 1));
 }
-.content(xs);
+.makeFlex(xs);
 
-.loop(length(@breakpoints));
+.loopOverBreakpoints(length(@breakpoints));
 

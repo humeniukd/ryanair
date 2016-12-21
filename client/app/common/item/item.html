@@ -1,0 +1,14 @@
+<div class="row flex-items-xs-center">
+    <h3 class="flight">
+      <span class="glyphicon glyphicon-plane"></span>
+
+      {{::$ctrl.item.dateFrom | date: 'yyyy-MM-dd h:mma'}}
+
+      <span class="glyphicon glyphicon-arrow-right"></span>
+
+    {{::$ctrl.item.dateTo | date: 'yyyy-MM-dd h:mma'}}
+
+      <span class="text-muted">{{::$ctrl.item.currency}}</span>{{::$ctrl.item.price | number : 2}}
+    </h3>
+</div>
+

@@ -6,7 +6,7 @@ import './';
 describe('Rest', () => {
   const model = {id: 1, user: 'Paul', amount: 3.1416};
   let $httpBackend, Rest;
-  beforeEach(angular.mock.module('rest'));
+  beforeEach(angular.mock.module('app.rest'));
 
   beforeEach(inject(($injector) => {
     $httpBackend = $injector.get('$httpBackend');

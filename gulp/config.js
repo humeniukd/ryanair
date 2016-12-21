@@ -14,8 +14,8 @@ const webpackEntry = [
   'babel-polyfill',
   path.join(__dirname, '../client/app/app.js')
 ];
-console.log(process.env.NODE_ENV);
-'devel' === env && webpackEntry.unshift('webpack-hot-middleware/client?reload=true');
+
+'production' !== env && webpackEntry.unshift('webpack-hot-middleware/client?reload=true');
 
 webpackConfig.entry = webpackEntry;
 

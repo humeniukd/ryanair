@@ -3,9 +3,7 @@ import controller from './hero.controller';
 import './hero.less';
 
 let heroComponent = {
-  restrict: 'E',
-  bindings: {},
-  controllerAs: 'he',
+  bindings: {criteria: '=?'},
   template,
   controller
 };
