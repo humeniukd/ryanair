@@ -1,5 +1,6 @@
 <main>
-  <hero criteria="$ctrl.criteria"></hero>
-  <flights-list criteria="$ctrl.criteria">
+  <h2>Please specify flights criteria <small class="glyphicon glyphicon-refresh" ng-show="$ctrl.loading"></small></h2>
+  <hero criteria="$ctrl.criteria" loading="$ctrl.loading"></hero>
+  <flights-list criteria="$ctrl.criteria" loading="$ctrl.loading">
   </flights-list>
 </main>

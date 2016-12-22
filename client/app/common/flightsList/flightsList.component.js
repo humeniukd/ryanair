@@ -3,7 +3,7 @@ import template from './flightsList.html';
 export default {
   bindings: {
     criteria: '<',
-    currentPage: '=?'
+    loading: '='
   },
   controller,
   template

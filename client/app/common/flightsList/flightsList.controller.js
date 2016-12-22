@@ -7,8 +7,12 @@ export default class ListController {
   $onChanges() {
     if (this.criteria) {
       const {source, destination, startDate, endDate} = this.criteria;
+      this.loading = true;
       this.Rest.getFlights({source, destination, startDate, endDate})
-        .then(resp => this.items = parseFlights(resp.data));
+        .then(resp => {
+          this.items = parseFlights(resp.data);
+          this.loading = false;
+        });
     }
   }
 }
