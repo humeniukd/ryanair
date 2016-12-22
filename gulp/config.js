@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import webpackConfig from '../webpack.config';
 
 const root = '..';
-const env = process.env.NODE_ENV;
+const flag = process.env.NODE_ENV;
 const client = `${root}/client`;
 const report = `${root}/report`;
 
@@ -15,23 +15,20 @@ const webpackEntry = [
   path.join(__dirname, '../client/app/app.js')
 ];
 
-'production' !== env && webpackEntry.unshift('webpack-hot-middleware/client?reload=true');
-
-webpackConfig.entry = webpackEntry;
-
 webpackConfig.output = {
   filename: '[name].bundle.js',
   publicPath: '/',
   path: path.resolve(__dirname, '../dist')
 };
 
-webpackConfig.plugins = webpackConfig.plugins.concat([
+if(!flag) {
+  webpackEntry.unshift('webpack-hot-middleware/client?reload=true');
+  webpackConfig.plugins = webpackConfig.plugins.concat([
+    new webpack.HotModuleReplacementPlugin()
+  ]);
+}
 
-  // Adds webpack HMR support. It act's like livereload,
-  // reloading page after webpack rebuilt modules.
-  // It also updates stylesheets and inline assets without page reloading.
-  new webpack.HotModuleReplacementPlugin()
-]);
+webpackConfig.entry = webpackEntry;
 
 function getKarmaOptions() {
   let options = {
@@ -45,7 +42,6 @@ function getKarmaOptions() {
 
 export default {
   resolveToComponents: resolveToComponents,
-  env,
   js: resolveToComponents('**/*!(.spec.js).js'),
   less: resolveToApp('**/*.less'),
   karma: getKarmaOptions(),
