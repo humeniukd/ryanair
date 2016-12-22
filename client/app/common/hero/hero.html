@@ -12,15 +12,11 @@
         typeahead-min-length="1"
         typeahead-editable="false"
         typeahead-no-results="noSourceResults"
-        typeahead-input-formatter="$ctrl.formatLabel($model, 'source')"
+        typeahead-input-formatter="$ctrl.formatLabel($model, 'sources')"
         required
       />
-      <div ng-show="!$ctrl.source && $ctrl.form.$submitted">
-        <p class="bg-danger text-muted">You didn't select departure airport</p>
-      </div>
-      <div ng-show="noSourceResults">
-        <p class="bg-warning text-muted">No results found</p>
-      </div>
+      <div class="alert-danger" ng-if="!noSourceResults" ng-show="!$ctrl.source && $ctrl.form.$submitted">You didn't select departure airport</div>
+      <div class="alert-warning" ng-show="noSourceResults">No results found</div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3">
       <input class="form-control"
@@ -32,15 +28,13 @@
         uib-typeahead="item.value as item.name for item in $ctrl.getDestinations($viewValue)"
         typeahead-editable="false"
         typeahead-no-results="noDestinationResults"
-        typeahead-input-formatter="$ctrl.formatLabel($model, 'destination')"
+        typeahead-input-formatter="$ctrl.formatLabel($model, 'destinations')"
         typeahead-min-length="0"
         required />
-      <div ng-show="!$ctrl.destination && $ctrl.form.$submitted">
-        <p class="bg-danger text-muted">Please select destination airport</p>
+      <div class="alert-danger" ng-if="!noDestinationResults" ng-show="!$ctrl.destination && $ctrl.form.$submitted">
+        Please select destination airport
       </div>
-      <div ng-show="noDestinationResults">
-        <p class="bg-warning text-muted">No results found</p>
-      </div>
+      <div class="alert-warning" ng-show="noDestinationResults">No results found</div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3">
       <div class="input-group">
@@ -56,13 +50,11 @@
           ng-change="$ctrl.startDateChange()"
           required
         />
-        <span class="input-group-addon" ng-click="$ctrl.startDatePickerIsOpened=!$ctrl.startDatePickerIsOpened">
+        <span class="input-group-addon" ng-click="$ctrl.toggleDatepicker('start')">
           <i class="glyphicon glyphicon-calendar"></i>
         </span>
       </div>
-      <div ng-show="!$ctrl.startDate && $ctrl.form.$submitted">
-        <p class="bg-danger text-muted">Please select start date</p>
-      </div>
+      <div class="alert-danger" ng-show="!$ctrl.startDate && $ctrl.form.$submitted">Please select start date</div>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-3">
       <div class="input-group">
@@ -76,13 +68,11 @@
           datepicker-options="$ctrl.endDateOptions"
           required
         />
-        <span class="input-group-addon" ng-click="$ctrl.endDatePickerIsOpened=!$ctrl.endDatePickerIsOpened">
+        <span class="input-group-addon" ng-click="$ctrl.toggleDatepicker('end')">
           <i class="glyphicon glyphicon-calendar"></i>
         </span>
       </div>
-      <div ng-show="!$ctrl.endDate && $ctrl.form.$submitted">
-        <p class="bg-danger text-muted">Please select end date</p>
-      </div>
+      <div class="alert-danger" ng-show="!$ctrl.endDate && $ctrl.form.$submitted">Please select end date</div>
     </div>
     <div class="col-xs-12">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>

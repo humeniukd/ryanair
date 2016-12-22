@@ -11,9 +11,13 @@ export default class HeroController {
     };
   }
   formatLabel(model, type) {
-    return this[`${type}s`] && this[`${type}s`].find((option) => {
+    return this[type] && this[type].find((option) => {
       return model === option.value;
     }).name;
+  }
+  toggleDatepicker(type) {
+    const propName = `${type}DatePickerIsOpened`;
+    this[propName] = !this[propName];
   }
   getSources(val) {
     return this.Rest.getAirports()
