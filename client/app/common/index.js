@@ -4,6 +4,7 @@ import Hero from './hero';
 import Rest from './rest';
 import Flight from './flight';
 import FlightsList from './flightsList';
+import './common.less';
 
 export default angular.module('app.common', [
   Navbar,

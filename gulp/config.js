@@ -16,6 +16,7 @@ const webpackEntry = [
 ];
 
 if (!isProduction) {
+  webpackConfig.devtool ='source-map';
   webpackEntry.unshift('webpack-hot-middleware/client?reload=true');
   webpackConfig.plugins = webpackConfig.plugins.concat([
 

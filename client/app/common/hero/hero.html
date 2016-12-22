@@ -1,6 +1,6 @@
 <form novalidate ng-submit="$ctrl.submit()" name="$ctrl.form" autocomplete="off">
   <div class="row flex-items-xs-middle hero">
-    <div class="col-xs">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
       <input class="form-control"
         placeholder="Choose a departure airport"
         type="text"
@@ -11,12 +11,18 @@
         typeahead-editable="false"
         typeahead-min-length="1"
         typeahead-editable="false"
+        typeahead-no-results="noSourceResults"
         typeahead-input-formatter="$ctrl.formatLabel($model, 'source')"
         required
       />
-      <div ng-show="!$ctrl.source && $ctrl.form.$submitted">You didn't select departure airport</div>
+      <div ng-show="!$ctrl.source && $ctrl.form.$submitted">
+        <p class="bg-danger text-muted">You didn't select departure airport</p>
+      </div>
+      <div ng-show="noSourceResults">
+        <p class="bg-warning text-muted">No results found</p>
+      </div>
     </div>
-    <div class="col-xs">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
       <input class="form-control"
         placeholder="Destination airport"
         type="text"
@@ -25,13 +31,18 @@
         ng-disabled="!$ctrl.source"
         uib-typeahead="item.value as item.name for item in $ctrl.getDestinations($viewValue)"
         typeahead-editable="false"
+        typeahead-no-results="noDestinationResults"
         typeahead-input-formatter="$ctrl.formatLabel($model, 'destination')"
         typeahead-min-length="0"
-        required
-      />
-      <div ng-show="!$ctrl.destination && $ctrl.form.$submitted">You didn't select destination airport</div>
+        required />
+      <div ng-show="!$ctrl.destination && $ctrl.form.$submitted">
+        <p class="bg-danger text-muted">Please select destination airport</p>
+      </div>
+      <div ng-show="noDestinationResults">
+        <p class="bg-warning text-muted">No results found</p>
+      </div>
     </div>
-    <div class="col-xs">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
       <div class="input-group">
         <input class="form-control"
           placeholder="Choose flight out"
@@ -48,10 +59,12 @@
         <span class="input-group-addon" ng-click="$ctrl.startDatePickerIsOpened=!$ctrl.startDatePickerIsOpened">
           <i class="glyphicon glyphicon-calendar"></i>
         </span>
-        <div ng-show="!$ctrl.startDate && $ctrl.form.$submitted">You didn't select start date</div>
+      </div>
+      <div ng-show="!$ctrl.startDate && $ctrl.form.$submitted">
+        <p class="bg-danger text-muted">Please select start date</p>
       </div>
     </div>
-    <div class="col-xs">
+    <div class="col-xs-12 col-sm-6 col-lg-3">
       <div class="input-group">
         <input class="form-control"
           name="endDate" type="text"
@@ -66,10 +79,13 @@
         <span class="input-group-addon" ng-click="$ctrl.endDatePickerIsOpened=!$ctrl.endDatePickerIsOpened">
           <i class="glyphicon glyphicon-calendar"></i>
         </span>
-        <div ng-show="!$ctrl.endDate && $ctrl.form.$submitted">You didn't select end date</div>
+      </div>
+      <div ng-show="!$ctrl.endDate && $ctrl.form.$submitted">
+        <p class="bg-danger text-muted">Please select end date</p>
       </div>
     </div>
-    <div class="col-xs">
-      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!$ctrl.form.$valid">Search</button>
+    <div class="col-xs-12">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
     </div>
-  </div></form>
+  </div>
+</form>
