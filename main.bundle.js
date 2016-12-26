@@ -384,7 +384,7 @@ webpackJsonp([0],{
 	  var flights = data.flights;
 
 	  return Array.isArray(flights) && flights.sort(function (a, b) {
-	    return parseFloat(a.price) > parseFloat(b.price);
+	    return parseFloat(a.price) - parseFloat(b.price);
 	  });
 	};
 	exports.getSuggestions = getSuggestions;
