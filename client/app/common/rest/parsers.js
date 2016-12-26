@@ -26,7 +26,7 @@ const getRoutes = (source, val) => {
 const parseFlights = (data) => {
     const { flights } = data;
     return Array.isArray(flights) && flights.sort((a, b) => {
-      return parseFloat(a.price) > parseFloat(b.price);
+      return parseFloat(a.price) - parseFloat(b.price);
     });
   };
 export { getSuggestions, getRoutes, parseFlights };
