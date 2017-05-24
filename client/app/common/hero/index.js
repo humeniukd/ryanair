@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import heroComponent from './hero.component';
 
 export default angular.module('app.hero', [

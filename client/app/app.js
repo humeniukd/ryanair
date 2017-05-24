@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import datepicker from 'angular-ui-bootstrap/src/datepickerPopup';
 import collapse from 'angular-ui-bootstrap/src/collapse';
 import typeahead from 'angular-ui-bootstrap/src/typeahead';

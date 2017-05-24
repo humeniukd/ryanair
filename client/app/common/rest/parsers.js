@@ -15,9 +15,10 @@ const getRoutes = (source, val) => {
     const {routes, airports} = data,
       codes = routes[source],
       regex = new RegExp(val, 'i');
+    console.log('adsfadsfas', codes)
     return Array.isArray(airports) && Array.isArray(codes) && airports.reduce((result, item) => {
         const {name, iataCode} = item;
-        codes.includes(iataCode) && regex.test(name) && result.push({name, value: iataCode});
+        codes.indexOf(iataCode) !== -1 && regex.test(name) && result.push({name, value: iataCode});
         return result;
       }, []);
   };
